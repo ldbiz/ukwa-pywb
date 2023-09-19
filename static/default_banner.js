@@ -157,12 +157,16 @@ This file is part of pywb, https://github.com/webrecorder/pywb
       logo.setAttribute("href", "/" + (window.banner_info.locale ? window.banner_info.locale + "/" : ""));
       logo.setAttribute("class", "_wb_linked_logo");
 
+      console.log("Logo link (banner debug) HREF: " + logo.getAttribute("href"));
+
+
       var logoContents = "";
       logoContents += "<img src='" + window.banner_info.logoImg + "' alt='" + window.banner_info.logoAlt + "'>";
       logoContents += "<img src='" + window.banner_info.logoImg + "' class='mobile' alt='" + window.banner_info.logoAlt + "'>";
 
       logo.innerHTML = logoContents;
       this.banner.appendChild(logo);
+
     }
 
     this.captureInfo = document.createElement("span");

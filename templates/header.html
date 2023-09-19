@@ -1,7 +1,8 @@
         <header>
-            <a href="{{ env['pywb.app_prefix'] }}/{{ env.pywb_lang + '/' if env.pywb_lang else ''}}" class="logo">
-                <img src="{{ static_prefix }}/ukwa-2018-w-med.png" width="200" height="122" alt="{{ _('UK Web Archive logo') }}">
+            <a href="{{ env['pywb.app_prefix'] }}/{{ env.pywb_lang + '/' if env.pywb_lang else ''}}" class="logo" id="myLogo">
+                    <img src="{{ static_prefix }}/ukwa-2018-w-med.png" width="200" height="122" alt="{{ _('UK Web Archive logo') }}">
             </a>
+  
             {% if not no_lang %}
             <div class="language-select">
                 {{ _('Language:') }}
@@ -14,3 +15,15 @@
             {% endif %}
         </header>
 
+        <script>
+          // debug href to devtools console
+          document.addEventListener("DOMContentLoaded", function() {
+              var logoElement = document.getElementById("myLogo");
+      
+              if (logoElement) {
+                  console.log("Logo link (header debug) HREF: " + logoElement.getAttribute("href"));
+              } else {
+                  console.log("Element with ID 'myLogo' not found.");
+              }
+          });
+      </script>
