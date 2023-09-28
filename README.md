@@ -41,9 +41,9 @@ Once the image has been built, it should be rolled out across the relevant [ukwa
 
 To build and run from a checked-out repository, you can set up a virtualenv (or similar) using Python 3.7 or later. Install the dependencies e.g.
 
-    python setup.py install
-
-Then run 
+    pip install .
+    
+    Then run 
 
     uwsgi uwsgi.ini
 

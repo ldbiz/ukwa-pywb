@@ -7,7 +7,7 @@ This repository provides a number of deployment options.
 This repository contains a standalone python package, which can be installed anr run locally:
 
 ```
-python setup.py install
+pip install .
 ./run-ukwa-pywb.sh [ -p 8080]
 ```
 A port can be supplied to start on a different port.

@@ -79,6 +79,9 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+# vscode
+**/*.code-workspace
+
 # dotenv
 .env
 
@@ -103,5 +106,11 @@ ENV/
 # Don't commit integration test results
 integration-test/results/
 
+# or test data
+/collections/
+
 # macOS
 *.DS_Store
+
+
+
