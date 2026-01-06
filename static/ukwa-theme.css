@@ -1,0 +1,191 @@
+/* ==============================
+   UKWA Institutional Theme
+   ============================== */
+
+:root {
+  /* Colour palette */
+  --ukwa-bg: #0f0f11;
+  --ukwa-surface: #18181c;
+  --ukwa-border: #2a2a30;
+  --ukwa-text: #e8e8ea;
+  --ukwa-muted: #b7b7bd;
+  --ukwa-gold: #d4af37;
+  --ukwa-gold-soft: #e6c766;
+  --ukwa-link: #f0d878;
+
+  /* Typography */
+  --ukwa-serif: "Libre Baskerville", Georgia, serif;
+  --ukwa-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --ukwa-max-width: 1100px;
+}
+
+body {
+  margin: 0;
+  background: var(--ukwa-bg);
+  color: var(--ukwa-text);
+  font-family: var(--ukwa-sans);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==============================
+     Header / Branding
+     ============================== */
+
+.site-header {
+  border-bottom: 1px solid var(--ukwa-border);
+  background: linear-gradient(180deg, #121216, #0f0f11);
+}
+
+.site-header-inner {
+  max-width: var(--ukwa-max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 1.25rem;
+}
+
+.site-logo {
+  display: block;
+  max-width: 420px;
+}
+
+.site-tagline {
+  font-family: var(--ukwa-serif);
+  color: var(--ukwa-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ==============================
+     Navigation
+     ============================== */
+
+.main-nav {
+  margin-top: 1.25rem;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--ukwa-text);
+  font-weight: 500;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--ukwa-gold);
+}
+
+/* ==============================
+     Content
+     ============================== */
+
+main {
+  max-width: var(--ukwa-max-width);
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ukwa-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
+}
+
+p {
+  max-width: 68ch;
+}
+
+/* ==============================
+     Cards / Panels
+     ============================== */
+
+.panel {
+  background: var(--ukwa-surface);
+  border: 1px solid var(--ukwa-border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.panel h3 {
+  margin-top: 0;
+}
+
+/* ==============================
+     Links & Actions
+     ============================== */
+
+a {
+  color: var(--ukwa-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--ukwa-gold);
+  color: var(--ukwa-gold);
+  text-decoration: none;
+  font-family: var(--ukwa-serif);
+  letter-spacing: 0.05em;
+}
+
+.button:hover {
+  background: var(--ukwa-gold);
+  color: #000;
+}
+
+/* ==============================
+     Footer
+     ============================== */
+
+.site-footer {
+  border-top: 1px solid var(--ukwa-border);
+  margin-top: 4rem;
+  padding: 2rem 1.25rem;
+  color: var(--ukwa-muted);
+}
+
+.site-footer-inner {
+  max-width: var(--ukwa-max-width);
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+     Accessibility
+     ============================== */
+
+:focus-visible {
+  outline: 2px solid var(--ukwa-gold);
+  outline-offset: 3px;
+}

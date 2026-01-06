@@ -1,56 +1,126 @@
-{% autoescape false %}
-{% if not embed_url %}
+<!DOCTYPE html>
+<html lang="{{ env.pywb_lang or 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- Custom Fixup Script -->
-<script src="{{ static_prefix }}/fixup.js"> </script>
+    <title>{{ _('UK Web Archive') }}</title>
 
-{# NPLD Addition for content frame #}
-{% if env.single_use_lock %}
-<script src="{{ static_prefix }}/selection-limits.js"> </script>
-<script>
-__WB_initSelectionLimit({{ env.select_word_limit }});
-</script>
-{% endif %}
+    <!-- Existing pywb / bootstrap assets -->
+    <link rel="stylesheet" href="{{ static_prefix }}/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ static_prefix }}/banner.css" />
 
-<!-- Video Transclusions -->
-<script src="{{ static_prefix }}/transclusions.js"> </script>
+    <!-- UKWA institutional banner theme -->
+    <link rel="stylesheet" href="{{ static_prefix }}/ukwa-banner-theme.css" />
 
-{% else %}
+    <script src="{{ static_prefix }}/jquery.min.js"></script>
+    <script src="{{ static_prefix }}/bootstrap.bundle.min.js"></script>
+    <script src="{{ static_prefix }}/fixup.js"></script>
+  </head>
 
-{# NPLD Addition for top-frame #}
-{% if env.single_use_lock %}
-<script>
-  setInterval(function () { window.fetch("/_locks/ping"); }, {{env.lock_ping_interval}});
-</script>
-{% endif %}
+  <body>
+    <!-- =========================
+     Banner
+     ========================= -->
+    <div id="banner" class="container-fluid py-2">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="banner-left">
+          <strong>UK Web Archive</strong>
+        </div>
 
+        <div class="banner-right">
+          <button
+            type="button"
+            class="btn btn-link p-0"
+            data-toggle="modal"
+            data-target="#termsModal"
+          >
+            {{ _('Access conditions') }}
+          </button>
+        </div>
+      </div>
+    </div>
 
-{% endif %}
+    <!-- =========================
+     Terms / Access Modal
+     ========================= -->
+    <div
+      class="modal fade"
+      id="termsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="termsModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- Modal header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsModalTitle">
+              {% trans %}UK Web Archive — Legal Deposit Access Policy{% endtrans
+              %}
+            </h5>
 
-<!-- default banner, create through js -->
-<script src='{{ static_prefix }}/default_banner.js'> </script>
-<link rel='stylesheet' href='{{ static_prefix }}/default_banner.css'/>
-<script>
-window.banner_info = {
-    is_gmt: false,
-    logoImg: "{{ static_prefix }}/ukwa-2018-w-sml.png",
+            {% if not no_lang %}
+            <div
+              class="btn-group ml-3"
+              role="group"
+              aria-label="{{ _('Language selection') }}"
+            >
+              {% for locale in locales %}
+              <a
+                id="terms-{{ locale }}"
+                class="btn btn-primary{% if env.pywb_lang == locale %} active{% endif %}"
+                href="{{ switch_locale(locale) }}"
+                role="button"
+              >
+                {{ locale | upper }}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
 
-    liveMsg: decodeURIComponent("{{ _Q('Live On') }}"),
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="{{ _('Close') }}"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-    calendarAlt: decodeURIComponent("{{ _Q('Calendar icon') }}"),
-    calendarLabel: decodeURIComponent("{{ _Q('Back to Calendar') }}"),
-    choiceLabel: decodeURIComponent("{{ _Q('Language:') }}"),
-    loadingLabel: decodeURIComponent("{{ _Q('Loading...') }}"),
-    logoAlt: decodeURIComponent("{{ _Q('UK Web Archive Logo') }}"),
+          <!-- Modal body -->
+          <div class="modal-body">
+            {% block banner_text %}
+            <p>
+              {% trans %} The UK Web Archive collects and preserves websites
+              published in the UK under the Legal Deposit Libraries Act 2003. {%
+              endtrans %}
+            </p>
 
-    locale: "{{ env.pywb_lang | default('en') }}",
-    curr_locale: "{{ env.pywb_lang }}",
-    locales: {{ locales }},
-    locale_prefixes: {{ get_locale_prefixes() | tojson }},
-    prefix: "{{ wb_prefix }}",
-    staticPrefix: "{{ static_prefix }}"
-};
-window.activeUrl = "{{ url }}";
-</script>
+            <p>
+              {% trans %} Some archived material is available openly online.
+              Other content is restricted and can only be accessed from Reading
+              Rooms at Legal Deposit Libraries. {% endtrans %}
+            </p>
 
-{% endautoescape %}
+            <p>
+              {% trans %} Access to restricted content is provided in accordance
+              with legal deposit regulations and publisher permissions. {%
+              endtrans %}
+            </p>
+            {% endblock %}
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              {{ _('Close') }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

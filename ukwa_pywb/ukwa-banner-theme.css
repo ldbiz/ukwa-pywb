@@ -1,0 +1,77 @@
+/* ==============================
+   UKWA Banner / Modal Theme
+   Scoped: pywb banner + terms modal
+   ============================== */
+
+:root {
+  --ukwa-bg: #0f0f11;
+  --ukwa-surface: #18181c;
+  --ukwa-border: #2a2a30;
+  --ukwa-text: #e8e8ea;
+  --ukwa-muted: #b7b7bd;
+  --ukwa-gold: #d4af37;
+}
+
+/* Banner container */
+#banner,
+.modal-content {
+  background-color: var(--ukwa-bg);
+  color: var(--ukwa-text);
+  border: 1px solid var(--ukwa-border);
+}
+
+/* Modal header */
+.modal-header {
+  border-bottom: 1px solid var(--ukwa-border);
+  background: linear-gradient(180deg, #121216, #0f0f11);
+}
+
+/* Modal title */
+.modal-title {
+  font-family: "Libre Baskerville", Georgia, serif;
+  letter-spacing: 0.04em;
+  color: var(--ukwa-gold);
+  font-weight: 700;
+}
+
+/* Modal body text */
+.modal-body {
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--ukwa-text);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: transparent;
+  border: 1px solid var(--ukwa-gold);
+  color: var(--ukwa-gold);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--ukwa-gold);
+  color: #000;
+}
+
+/* Language toggle buttons */
+.btn-group .btn {
+  font-family: "Inter", Arial, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Close button */
+.modal-header .close {
+  color: var(--ukwa-muted);
+  text-shadow: none;
+  opacity: 1;
+}
+
+.modal-header .close:hover {
+  color: var(--ukwa-gold);
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid var(--ukwa-gold);
+  outline-offset: 2px;
+}

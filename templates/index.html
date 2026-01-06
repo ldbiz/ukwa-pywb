@@ -1,16 +1,27 @@
-{% extends "base.html" %}
-{% block body %}
+{% extends "base.html" %} {% block body %}
 
-<h2>{% trans %}UK Web Archive Access System{% endtrans %}</h2>
+<section class="ukwa-home">
+  <header class="ukwa-home-header">
+    <h1>{% trans %}UK Web Archive{% endtrans %}</h1>
 
-{% trans %}This web archive contains the following collections:{% endtrans %}
+    <p class="ukwa-home-intro">
+      {% trans %} The UK Web Archive preserves websites published in the United
+      Kingdom, providing access for research, teaching, and public
+      understanding. {% endtrans %}
+    </p>
+  </header>
 
-<ul>
-{% for route in routes %}
-    <li>
-    <a href="{{ route }}">{{ '/' + route }}</a>
-    </li>
-{% endfor %}
-</ul>
+  <section class="ukwa-collections">
+    <h2>{% trans %}Available collections{% endtrans %}</h2>
+
+    <ul class="ukwa-collection-list">
+      {% for route in routes %}
+      <li>
+        <a href="{{ route }}">{{ '/' + route }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</section>
 
 {% endblock %}
